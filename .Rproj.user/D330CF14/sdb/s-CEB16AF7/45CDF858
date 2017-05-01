@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "The project notebook is [here](Notebook.nb.html)\nThe GitHub repository is [here](https://github.com/CannataUTDV/s17dvfinalproject-mbigi-stroe-kranz)\n",
+    "contents" : "The project notebook is [here](Notebook.nb.html)\n\nThe GitHub repository is [here](https://github.com/CannataUTDV/s17dvfinalproject-mbigi-stroe-kranz)\n",
     "created" : 1493596884126.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2513060015",
+    "hash" : "1392822524",
     "id" : "45CDF858",
-    "lastKnownWriteTime" : 1493596917,
-    "last_content_update" : 1493596917289,
+    "lastKnownWriteTime" : 1493607250,
+    "last_content_update" : 1493607250239,
     "path" : "~/CS329E/DataVisualization/s17dvfinalproject-mbigi-stroe-kranz/02 Shiny/Barcharts/README.md",
     "project_path" : "02 Shiny/Barcharts/README.md",
     "properties" : {
