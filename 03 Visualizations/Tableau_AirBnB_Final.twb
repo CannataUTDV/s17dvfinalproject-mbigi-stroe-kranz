@@ -43379,7 +43379,7 @@
     </worksheet>
   </worksheets>
   <windows source-height='30'>
-    <window class='worksheet' name='Neighborhood Price'>
+    <window class='worksheet' maximized='true' name='Neighborhood Price'>
       <cards>
         <edge name='left'>
           <strip size='101'>
@@ -43545,7 +43545,7 @@
         </edge>
       </cards>
     </window>
-    <window class='worksheet' maximized='true' name='Sheet 8'>
+    <window class='worksheet' name='Sheet 8'>
       <cards>
         <edge name='left'>
           <strip size='160'>
