@@ -1,5 +1,5 @@
 ---
-title: "<center><b>Project 6</b></center>"
+title: "<center><b>Final Project</b></center>"
 author: "<center><b>Daniel Stroe, Kurt Kranz, Bongani Mbigi</b></center>"
 output:
   html_document:
@@ -9,7 +9,7 @@ output:
 ---
 
 #**Introduction**
-The Data Set explores [AirBnB Prices in Austin](https://data.world/kurtakranz/s-17-dv-project-6). 
+The Data Set explores [AirBnB Prices in Austin](https://data.world/kurtakranz/s-17-dv-final-project). 
 
 #**The Data**
 
@@ -72,55 +72,99 @@ summary(df)
 
 Instruction to Reproduce
 -------------------------
-- Download the AirBnb data from data.world, search for "KurtAKranz" and download the dataset named "S17 DV Project 6."
+- Download the AirBnb data from data.world, search for "KurtAKranz" and download the dataset named "S17 DV Final Project."
 
-- We ran a ETL script that standardized the data from "01 Data" folder. it standardized the colomn data to be consistent among all data points.
+- We ran a ETL script that standardized the data from "01 Data" folder. It standardized the colomn data to be consistent among all data points.
 
-- from that, we used Tableau's Data connector to connect to our data set in data.world.
+- From that, we used Tableau's Data connector to connect to our data set in data.world.
 
-- We created 3 different visualizations using Reference lines, formatting, ID sets, and table calculations.
+- We created 6 different visualizations using Boxplots, Scatter Plots, Histrograms, Crosstabs, and Barcharts.
 
-- Our first visualization we showed the average price of each room type, grouped by zipcode. For each room type, we had a reference line showing the average price of each room type.
+- Our first visualization, we showed a crosstab using zip code and room type, with a key performance idicator of average price. We also created parameters that effectively let one select a price range for acceptable locations.
 
-- Our second visualization we showed each zip code's deviation from the average price of all zip codes.
+- Our second visualization, we showed each zip code's deviation from the average price among all zip codes. From this, we created a set of the top 5 most pricey zip codes.
 
-- Our third visualization was Population Vs Average Price where we created a join between the census data and then created a bar chart with neighbourhood as the coloumns and AVG(Population) and AGG(Average Price) as the rows.
+- Our third visualization, we showed the average price of each room type, grouped by zipcode. For each room type, we had a reference line showing the average price of each room type.
 
-- For our shiny visualizations, we created data frames for each bar chart we had. We made specifc queries for whatever data we needed. Then we used ggplot to take our data frame and make it into a visualization.   
+- Our fourth visualization, we created a histogram using the average price to convey that the data is skewed right. This means that using the mean to calculate the average is not going to be as accurate as using the median.
+
+- Our fifth visualization was Population Vs Average Price where we created a join between the census data and then created a scatter plot with neighbourhood as the coloumns and AVG(Population) and AGG(Average Price) as the rows. We then added a trend line to convey the data's negetive trend.
+
+- Our sixth and final visualization, we created a boxplot for the prices of the top 5 most pricey zip codes. This showed the outliars in the data, showing again that the median is the better way to express the average.
+
+- For our shiny visualizations, we created data frames for each graph we had. We made specifc queries for whatever data we needed. Then we used ggplot to take our data frame and create a ggplot object. From that, we used plotly to express the ggplot data with a more interactive display.  
 
 
 
-##[Shiny App](https://kurtakranz.shinyapps.io/barcharts_project6/) 
+##[Shiny App](https://kurtakranz.shinyapps.io/final/) 
 
 
-Neighborhood Prices
+Crosstab with Average Price KPI
 -----------------------------------------------------
-- Our first visualization we showed the average price of each room type, grouped by zipcode For each room type, we had a reference line showing the average price of each room type. this adjust the average for the type of housing and accounts for that confounding feature.
+- Crosstab using zip code and room type, with a key performance idicator of average price. Parameters were set at 197 for the low end, and 425 for the high end. Effectively making $197 - $425 someones price range. Values in that range are highlighted green. Values above are red, and values below are blue.
 
 ###Tableau
-<center>![Above_or_Below Average](../03 Visualizations/Neighborhood_Price.PNG)</center>
+<center>![Above_or_Below Average](../03 Visualizations/crosstab.png)</center>
 ###Shiny
-<center>![Above_or_Below Average2](../03 Visualizations/p2.PNG)</center>
+<center>![Above_or_Below Average2](../03 Visualizations/crosstab_shiny.png)</center>
 
 
 Above or Below Average
 -----------------------------------------------------
-This shows the releative pricing for each location compared to the overall averaage. this enable comparision for pricing to be able to see if you are paying above the market average.
+This shows the releative pricing for each zip code compared to the overall average. This enables comparision for pricing to see if you are paying above the market average.
 
 
 ###Tableau
-<center>![Above_or_Below Average](../03 Visualizations/Above_or_Below Average.PNG)</center>
+<center>![Above_or_Below Average](../03 Visualizations/above_or_below_average.png)</center>
 ###Shiny
-<center>![Above_or_Below Average2](../03 Visualizations/p1.PNG)</center>
+<center>![Above_or_Below Average2](../03 Visualizations/above_or_below_average_shiny.png)</center>
 
 
 
 
-Neighborhood vs. Population
+Room Type vs. Price
 -----------------------------------------------------
-- Our third visualization was Population Vs Average Price where we created a join between the census data and then created a bar chart with neighbourhood as the coloumns and AVG(Population) and AGG(Average Price) as the rows. This is interesting because it shows the simulariting between popuation size and pricing or rather the inverse reationship between the two.
+- The average price of each room type, grouped by zipcode. For each room type, there is a reference line showing the average price of each room type. This 
 
 ###Tableau
-<center>![Above_or_Below Average](../03 Visualizations/Neighborhood vs. Population.PNG)</center>
+<center>![Above_or_Below Average](../03 Visualizations/room_type_price.png)</center>
 ###Shiny
-<center>![Above_or_Below Average2](../03 Visualizations/p3.PNG)</center>
+<center>![Above_or_Below Average2](../03 Visualizations/room_type_price_shiny1.png)</center>
+<center>![Above_or_Below Average2](../03 Visualizations/room_type_price_shiny2.png)</center>
+<center>![Above_or_Below Average2](../03 Visualizations/room_type_price_shiny3.png)</center>
+
+
+
+Price Histogram
+-----------------------------------------------------
+Histogram using the average price to convey that the data is skewed right. This means that using the mean to calculate the average is not going to be as accurate as using the median.
+
+
+###Tableau
+<center>![Above_or_Below Average](../03 Visualizations/price_histogram.png)</center>
+###Shiny
+<center>![Above_or_Below Average2](../03 Visualizations/price_histogram_shiny.png)</center>
+
+
+
+Population vs. Average Price
+-----------------------------------------------------
+Scatter Plot created using a join between our data and the census data. The trend line's negative slope indicated that the average price of a zip code decreases as the population of the zip code increases.
+
+
+###Tableau
+<center>![Above_or_Below Average](../03 Visualizations/scatter_plot.png)</center>
+###Shiny
+<center>![Above_or_Below Average2](../03 Visualizations/scatter_plot_shiny.png)</center>
+
+
+
+Top 5 Most Pricey Zip Codes
+-----------------------------------------------------
+Boxplot for the prices of the top 5 most pricey zip codes. This showed the outliars in the data, showing again that the median is the better way to express the average.
+
+
+###Tableau
+<center>![Above_or_Below Average](../03 Visualizations/box_plot.png)</center>
+###Shiny
+<center>![Above_or_Below Average2](../03 Visualizations/box_plot_shiny.png)</center>

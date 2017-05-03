@@ -3,17 +3,19 @@ require(shiny)
 require(shinydashboard)
 require(DT)
 require(leaflet)
+require(plotly)
 
 dashboardPage(
   dashboardHeader(
   ),
   dashboardSidebar(
     sidebarMenu(
+      menuItem("Average Price KPI", tabName = "kpi_table", icon = icon("dashboard")),
       menuItem("Above or Below Average", tabName = "barchart2", icon = icon("dashboard")),
       menuItem("Room Type Price", tabName = "barchart1", icon = icon("dashboard")),
       menuItem("Price Histogram", tabName = "histogram", icon = icon("dashboard")),
       menuItem("Population vs. Average Price", tabName = "scatter", icon = icon("dashboard")),
-      menuItem("Average Price KPI", tabName = "kpi_table", icon = icon("dashboard")),
+      
       menuItem("Boxplot", tabName = "boxplot", icon = icon("dashboard"))
     )
   ),
@@ -98,6 +100,18 @@ dashboardPage(
                         
                ),
                tabPanel("Boxplot", plotlyOutput("boxplotPlot", height=500))
+             )
+     ),
+     tabItem(tabName = "heatmap",
+             tabsetPanel(
+               tabPanel("Data",  
+                        actionButton(inputId = "click8",  label = "To get data, click here"),
+                        hr(), # Add space after button 
+                        DT::dataTableOutput("heatmapData")
+                        
+                        
+               ),
+               tabPanel("Heatmap", plotlyOutput("heatmapPlot", height=500))
              )
      )
     

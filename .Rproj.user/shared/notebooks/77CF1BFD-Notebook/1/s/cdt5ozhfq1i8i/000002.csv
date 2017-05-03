@@ -1,0 +1,113 @@
+"0","```r
+```r
+source(\../01 Data/ETL_listings.R\)
+```
+```"
+"1","Parsed with column specification:
+cols(
+  id = col_integer(),
+  name = col_character(),
+  host_id = col_integer(),
+  host_name = col_character(),
+  neighbourhood_group = col_character(),
+  neighbourhood = col_integer(),
+  latitude = col_double(),
+  longitude = col_double(),
+  room_type = col_character(),
+  price = col_integer(),
+  minimum_nights = col_integer(),
+  number_of_reviews = col_integer(),
+  last_review = col_date(format = \\),
+  reviews_per_month = col_double(),
+  calculated_host_listings_count = col_integer(),
+  availability_365 = col_integer()
+)
+The following `from` values were not present in `x`: table
+The following `from` values were not present in `x`: table
+invalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generatedinvalid factor level, NA generated
+Classes Ã¢â‚¬Ëœtbl_dfÃ¢â‚¬â„¢, Ã¢â‚¬ËœtblÃ¢â‚¬â„¢ and 'data.frame':	5835 obs. of  16 variables:
+ $ id                            : Factor w/ 5835 levels \1001400\,\1002993\,..: 3982 2724 5377 5383 4967 4990 3590 4897 5154 2576 ...
+ $ name                          : Factor w/ 5780 levels \------Comfy 3/2 Home------\,..: 419 2138 4123 4124 1225 4118 4521 2044 4484 4781 ...
+ $ host_id                       : Factor w/ 4633 levels \10010707\,\10015316\,..: 2915 2126 3621 3621 2522 3474 2627 169 3538 1232 ...
+ $ host_name                     : Factor w/ 1827 levels \(email hidden)\,..: 804 1268 1479 1479 224 NA 831 1427 177 NA ...
+ $ neighbourhood_group           : Factor w/ 0 levels: NA NA NA NA NA NA NA NA NA NA ...
+ $ neighbourhood                 : Factor w/ 41 levels \78701\,\78702\,..: 25 25 25 25 25 25 25 25 25 25 ...
+ $ latitude                      : Factor w/ 5835 levels \30.1305163587544\,..: 266 225 62 64 65 126 130 109 142 68 ...
+ $ longitude                     : Factor w/ 5835 levels \-5.09368239448111\,..: 5739 5765 5692 5695 5746 5771 5791 5752 5699 5703 ...
+ $ room_type                     : Factor w/ 3 levels \Entire home/apt\,..: 2 2 2 2 1 2 2 2 2 2 ...
+ $ price                         : Factor w/ 468 levels \0\,\100\,\1000\,..: 228 464 2 2 362 2 341 283 48 302 ...
+ $ minimum_nights                : Factor w/ 26 levels \1\,\10\,\13\,..: 6 14 1 1 6 1 1 1 1 1 ...
+ $ number_of_reviews             : Factor w/ 163 levels \0\,\1\,\10\,\100\,..: 2 1 1 1 1 1 1 66 1 67 ...
+ $ last_review                   : Factor w/ 330 levels \2011-03-21\,\2012-01-26\,..: 1 NA NA NA NA NA NA 324 NA 305 ...
+ $ reviews_per_month             : Factor w/ 566 levels \0.02\,\0.03\,..: 1 NA NA NA NA NA NA 203 NA 252 ...
+ $ calculated_host_listings_count: Factor w/ 14 levels \1\,\10\,\11\,..: 1 1 7 7 7 1 1 1 1 1 ...
+ $ availability_365              : Factor w/ 362 levels \0\,\1\,\10\,\100\,..: 155 292 293 293 285 293 223 235 282 292 ...
+ - attr(*, \spec\)=List of 2
+  ..$ cols   :List of 16
+  .. ..$ id                            : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_integer\ \collector\
+  .. ..$ name                          : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_character\ \collector\
+  .. ..$ host_id                       : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_integer\ \collector\
+  .. ..$ host_name                     : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_character\ \collector\
+  .. ..$ neighbourhood_group           : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_character\ \collector\
+  .. ..$ neighbourhood                 : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_integer\ \collector\
+  .. ..$ latitude                      : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_double\ \collector\
+  .. ..$ longitude                     : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_double\ \collector\
+  .. ..$ room_type                     : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_character\ \collector\
+  .. ..$ price                         : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_integer\ \collector\
+  .. ..$ minimum_nights                : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_integer\ \collector\
+  .. ..$ number_of_reviews             : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_integer\ \collector\
+  .. ..$ last_review                   :List of 1
+  .. .. ..$ format: chr \\
+  .. .. ..- attr(*, \class\)= chr  \collector_date\ \collector\
+  .. ..$ reviews_per_month             : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_double\ \collector\
+  .. ..$ calculated_host_listings_count: list()
+  .. .. ..- attr(*, \class\)= chr  \collector_integer\ \collector\
+  .. ..$ availability_365              : list()
+  .. .. ..- attr(*, \class\)= chr  \collector_integer\ \collector\
+  ..$ default: list()
+  .. ..- attr(*, \class\)= chr  \collector_guess\ \collector\
+  ..- attr(*, \class\)= chr \col_spec\
+"
+"0","```r
+```r
+summary(df)
+```
+```"
+"1","       id                                       name          host_id       host_name    neighbourhood_group neighbourhood 
+ 1001400:   1   East Austin Bungalow              :   6   4641823 : 127   Erica  : 135   NA's:5835           78704  :1601  
+ 1002993:   1   East Austin Home                  :   4   31148752:  42   John   :  56                       78702  : 797  
+ 1003316:   1   Euro Hostel/Dorm Style by Downtown:   4   8167447 :  26   Sarah  :  51                       78703  : 419  
+ 1003775:   1   Charming East Austin Bungalow     :   3   579290  :  18   Michael:  49                       78741  : 414  
+ 1009806:   1   East Austin Charmer               :   3   1488733 :  17   Ryan   :  45                       78745  : 328  
+ 1011620:   1   1 bedroom with private bath       :   2   1568741 :  15   (Other):5206                       78751  : 251  
+ (Other):5829   (Other)                           :5813   (Other) :5590   NA's   : 293                       (Other):2025  
+             latitude                longitude              room_type        price      minimum_nights number_of_reviews
+ 30.1305163587544:   1   -5.09368239448111:   1   Entire home/apt:4060   150    : 253   1      :2776   0      :2006     
+ 30.1399214304874:   1   -97.5670481812431:   1   Private room   :1652   200    : 227   2      :2005   1      : 698     
+ 30.1406878366631:   1   -97.586245659854 :   1   Shared room    : 123   250    : 203   3      : 690   2      : 452     
+ 30.1415093891488:   1   -97.5877635840428:   1                          300    : 181   4      : 147   3      : 302     
+ 30.1423321194423:   1   -97.6136226010006:   1                          100    : 175   5      :  88   4      : 275     
+ 30.1424347881363:   1   -97.6180279594552:   1                          125    : 156   7      :  43   5      : 186     
+ (Other)         :5829   (Other)          :5829                          (Other):4640   (Other):  86   (Other):1916     
+     last_review   reviews_per_month calculated_host_listings_count availability_365
+ 2015-10-26: 260   1      : 211      1      :4169                   365    :1236    
+ 2015-10-12: 215   0.13   : 194      2      : 823                   364    : 268    
+ 2015-10-25: 187   0.25   :  79      3      : 232                   363    : 203    
+ 2015-11-02: 177   2      :  77      7      : 169                   0      :  92    
+ 2015-10-27: 166   0.05   :  65      4      : 152                   362    :  80    
+ (Other)   :2824   (Other):3201      6      :  62                   361    :  71    
+ NA's      :2006   NA's   :2008      (Other): 228                   (Other):3885    
+"

@@ -7,8 +7,6 @@ ticker <- readr::read_csv(file_path)
 
 df <- plyr::rename(ticker, c("table"="tbl"))
 
-df <- plyr::rename(ticker, c("table"="tbl"))
-
 measures <- c("price")
 
 for(n in names(df)) {

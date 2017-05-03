@@ -264,8 +264,8 @@ shinyServer(function(input, output) {
   
   output$kpiPlot <- renderPlotly({p <- ggplot(df_kpi()) + 
       
-      geom_text(aes(x=room_type, y=neighbourhood, label=round(average_price, 2)), size=6) +
-      geom_tile(aes(x=room_type, y=neighbourhood, fill=kpi), alpha=0.50) + theme_light()
+      geom_text(aes(x=room_type, y=factor(neighbourhood), label=round(average_price, 2)), size=3) +
+      geom_tile(aes(x=room_type, y=factor(neighbourhood), fill=kpi), alpha=0.50) + theme_light()
       ggplotly(p)
   })
 
@@ -295,6 +295,9 @@ shinyServer(function(input, output) {
       geom_boxplot() + theme_light()
     ggplotly(p)
   })
+  
+  
+
   
   
 } 
