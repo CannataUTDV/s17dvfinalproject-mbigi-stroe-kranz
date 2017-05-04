@@ -96,7 +96,7 @@ Instruction to Reproduce
 
 
 
-##[Shiny App](https://kurtakranz.shinyapps.io/final/) 
+##[Shiny App](https://kurtakranz.shinyapps.io/airbnb_austin/) 
 
 
 Crosstab with Average Price KPI
@@ -168,3 +168,12 @@ Boxplot for the prices of the top 5 most pricey zip codes. This showed the outli
 <center>![Above_or_Below Average](../03 Visualizations/box_plot.png)</center>
 ###Shiny
 <center>![Above_or_Below Average2](../03 Visualizations/box_plot_shiny.png)</center>
+
+
+Price Density Map
+-----------------------------------------------------
+A map of Austin zip codes and the average price associated with each area. The red areas are zip codes with prices above the city's average, the blue areas are zip codes with price being below the city's average.
+
+
+###Tableau
+<center>![Above_or_Below Average](../03 Visualizations/heatmap.png)</center>

@@ -139,7 +139,7 @@ shinyServer(function(input, output) {
   })
   
   output$barchartPlot1 <- renderPlotly({
-    p <- ggplot(df2(), aes(x=factor(neighbourhood), y=price_difference)) + geom_bar(stat = 'identity', color="blue", fill="lightblue") + theme_light() + theme(text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1)) + labs(x = 'Zip Code')
+    p <- ggplot(df2(), aes(x=factor(neighbourhood), y=price_difference)) + geom_bar(stat = 'identity', color="blue", fill="lightblue") + labs(x = 'Zip Code') + theme_light() + theme(text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1))
     ggplotly(p)
   })
   
@@ -227,7 +227,7 @@ shinyServer(function(input, output) {
    
    output$scatterPlot <- renderPlotly({
      p <- ggplot(df_scatter(), aes(x=population, y=average_price, fill = neighbourhood)) +
-       geom_point(color = "skyblue" )+ labs(x = 'Population per Zip Code') + geom_smooth(method=lm, se=FALSE) + theme_light()
+       geom_point(color = "skyblue" )+ labs(x = 'Population per Zip Code') + geom_smooth(method=lm, se=FALSE) + guides(neighbourhood=FALSE) + theme_light()
      ggplotly(p)
    })
    
