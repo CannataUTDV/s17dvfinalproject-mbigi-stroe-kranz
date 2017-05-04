@@ -97,17 +97,17 @@ shinyServer(function(input, output) {
   })
   
   output$plot1 <- renderPlotly({
-    p <- ggplot(df11(), aes(x=factor(neighbourhood), y=average_price)) + geom_bar(stat = 'identity', color = "blue", fill = "lightblue") + geom_hline(yintercept=365.8) + labs(title="Entire Room/Apt Prices") + theme_light() + theme(text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1))
+    p <- ggplot(df11(), aes(x=factor(neighbourhood), y=average_price)) + geom_bar(stat = 'identity', color = "blue", fill = "lightblue") + geom_hline(yintercept=365.8) + labs(title="Entire Room/Apt Prices") + theme_light() + theme(text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1)) + labs(x = 'Zip Code')
     ggplotly(p)
   })
   
   output$plot2 <- renderPlotly({
-    p <- ggplot(df12(), aes(x=factor(neighbourhood), y=average_price)) + geom_bar(stat = 'identity', color = "blue", fill = "lightblue") + geom_hline(yintercept=105) + labs(title="Private Room Prices") + theme_light() + theme(text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1))
+    p <- ggplot(df12(), aes(x=factor(neighbourhood), y=average_price)) + geom_bar(stat = 'identity', color = "blue", fill = "lightblue") + geom_hline(yintercept=105) + labs(title="Private Room Prices") + theme_light() + theme(text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1)) + labs(x = 'Zip Code')
     ggplotly(p)
   })
   
   output$plot3 <- renderPlotly({
-    p <- ggplot(df13(), aes(x=factor(neighbourhood), y=average_price)) + geom_bar(stat = 'identity', color = "blue", fill = "lightblue") + geom_hline(yintercept=105) + labs(title="Shared Room Prices") + theme_light() + theme(text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1))
+    p <- ggplot(df13(), aes(x=factor(neighbourhood), y=average_price)) + geom_bar(stat = 'identity', color = "blue", fill = "lightblue") + geom_hline(yintercept=105) + labs(title="Shared Room Prices") + theme_light() + theme(text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1)) + labs(x = 'Zip Code')
     ggplotly(p)
   })
   
@@ -139,7 +139,7 @@ shinyServer(function(input, output) {
   })
   
   output$barchartPlot1 <- renderPlotly({
-    p <- ggplot(df2(), aes(x=factor(neighbourhood), y=price_difference)) + geom_bar(stat = 'identity', color="blue", fill="lightblue") + theme_light() + theme(text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1))
+    p <- ggplot(df2(), aes(x=factor(neighbourhood), y=price_difference)) + geom_bar(stat = 'identity', color="blue", fill="lightblue") + theme_light() + theme(text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1)) + labs(x = 'Zip Code')
     ggplotly(p)
   })
   
@@ -168,13 +168,13 @@ shinyServer(function(input, output) {
   })
   
   output$barchartPlot2 <- renderPlot({
-    ggplot(df3(), aes(x=factor(neighbourhood), y=population)) + geom_bar(stat = 'identity')
+    ggplot(df3(), aes(x=factor(neighbourhood), y=population)) + geom_bar(stat = 'identity') + labs(x = 'Zip Code')
   })
 
   
   
   output$barchartPlot3 <- renderPlot({
-    ggplot(df3(), aes(x=factor(neighbourhood), y=average_price)) + geom_bar(stat = 'identity')
+    ggplot(df3(), aes(x=factor(neighbourhood), y=average_price)) + geom_bar(stat = 'identity') + labs(x = 'Zip Code')
   })
   
   df_hist <- eventReactive(input$click4, {
@@ -209,7 +209,8 @@ shinyServer(function(input, output) {
      query(
        data.world(propsfile = "www/.data.world"),
        dataset="kurtakranz/s-17-dv-final-project", type="sql",
-       query= "SELECT p.B05001_001 as population, avg(price) as average_price
+       query= "SELECT p.B05001_001 as population, avg(price) as average_price,
+              neighbourhood
       from clean_listings_summary l join 
       uscensusbureau.`acs-2015-5-e-foreignbirth`.`USA_ZCTA.csv/USA_ZCTA` p
       on (l.neighbourhood = p.ZCTA)
@@ -225,8 +226,8 @@ shinyServer(function(input, output) {
    })
    
    output$scatterPlot <- renderPlotly({
-     p <- ggplot(df_scatter(), aes(x=population, y=average_price)) +
-       geom_point(color = "skyblue") + geom_smooth(method=lm, se=FALSE) + theme_light()
+     p <- ggplot(df_scatter(), aes(x=population, y=average_price, fill = neighbourhood)) +
+       geom_point(color = "skyblue" )+ labs(x = 'Population per Zip Code') + geom_smooth(method=lm, se=FALSE) + theme_light()
      ggplotly(p)
    })
    
@@ -239,14 +240,14 @@ shinyServer(function(input, output) {
      query(
        data.world(propsfile = "www/.data.world"),
        dataset="kurtakranz/s-17-dv-final-project", type="sql",
-       query= "SELECT neighbourhood, room_type, avg(price) as average_price,
+       query= "SELECT neighbourhood, room_type, avg(price) as avg_price,
        SUM(price) as sum_price, count(neighbourhood) as count_neighbourhood,
        
        case
        when (SUM(price) / COUNT(neighbourhood)) < ? then '03 Low'
        when (SUM(price) / COUNT(neighbourhood)) > ? then '01 High'
        else '02 Medium'
-       end AS kpi
+       end AS average_price
        
        from clean_listings_summary
        
@@ -264,8 +265,8 @@ shinyServer(function(input, output) {
   
   output$kpiPlot <- renderPlotly({p <- ggplot(df_kpi()) + 
       
-      geom_text(aes(x=room_type, y=factor(neighbourhood), label=round(average_price, 2)), size=3) +
-      geom_tile(aes(x=room_type, y=factor(neighbourhood), fill=kpi), alpha=0.50) + theme_light()
+      geom_text(aes(x=room_type, y=factor(neighbourhood), label=round(avg_price, 2)), size=3) +
+      geom_tile(aes(x=room_type, y=factor(neighbourhood), fill=average_price), alpha=0.50) + labs(x = 'Zip Code') + theme_light()
       ggplotly(p)
   })
 
@@ -291,7 +292,7 @@ shinyServer(function(input, output) {
   })
   
   output$boxplotPlot <- renderPlotly({
-    p <- ggplot(df_box(), aes(x=factor(neighbourhood), y=price)) +
+    p <- ggplot(df_box(), aes(x=factor(neighbourhood), y=price)) + labs(x = 'Zip Code') + 
       geom_boxplot() + theme_light()
     ggplotly(p)
   })
